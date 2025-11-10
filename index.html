@@ -1,43 +1,231 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accesso</title>
+    <title>Open Day - Benvenuti</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 50px;
+            max-width: 600px;
+            text-align: center;
+            border: 3px solid #8B0000;
+        }
+
+        h1 {
+            color: #8B0000;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            color: #DC143C;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .qr-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #qrcode {
+            display: inline-block;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .instruction {
+            color: #333;
+            font-size: 1.1em;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #DC143C;
+        }
+
+        /* Password Page Styles */
+        .password-page {
+            display: none;
+        }
+
+        .password-page.active {
+            display: block;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+            border: 2px solid #DC143C;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        button {
+            background: #8B0000;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #DC143C;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
+        }
+
+        .error {
+            color: #DC143C;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .success-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .success-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .checkmark {
+            font-size: 4em;
+            color: #8B0000;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div id="loginPage">
-        <h1>Inserisci la password</h1>
-        <input type="password" id="passwordInput" placeholder="Password">
-        <br><br>
-        <button onclick="checkPassword()">Entra</button>
-        <p id="errorMessage"></p>
-    </div>
-
-    <div id="gamePage" style="display: none;">
-        <h1>Benvenuto!</h1>
-        <p>Qui ci sarà il gioco...</p>
-        <p>[PLACEHOLDER PER IL GIOCO]</p>
-    </div>
-
-    <script>
-        const correctPassword = "123";
-
-        function checkPassword() {
-            const input = document.getElementById("passwordInput").value;
-            const errorMsg = document.getElementById("errorMessage");
+    <div class="container">
+        <!-- Landing Page -->
+        <div id="landingPage">
+            <h1>Benvenuti al laboratorio di informatica</h1>
+            <p class="subtitle">Questo è il primo step del vostro viaggio!</p>
             
-            if (input === correctPassword) {
-                document.getElementById("loginPage").style.display = "none";
-                document.getElementById("gamePage").style.display = "block";
+            <div class="qr-section">
+                <div id="qrcode"></div>
+                <p class="instruction">
+                    Scannerizza il QR Code per accedere alla password
+                </p>
+            </div>
+            
+            <div class="footer">
+                <p>Buona fortuna!</p>
+            </div>
+        </div>
+
+        <!-- Password Page -->
+        <div id="passwordPage" class="password-page">
+            <div class="checkmark"></div>
+            <h1>Primo Step Completato!</h1>
+            <p class="subtitle"></p>
+            
+            <div class="qr-section">
+                <h2 style="color: #8B0000; margin-bottom: 15px;">La tua password è:</h2>
+                <div style="background: #8B0000; color: white; padding: 20px; border-radius: 10px; font-size: 2em; font-weight: bold; margin: 20px 0;">
+                    OPENDAY2025
+                </div>
+                
+                <h2 style="color: #DC143C; margin-top: 30px; margin-bottom: 10px;">Vai alla postazione:</h2>
+                <div style="background: #DC143C; color: white; padding: 30px; border-radius: 10px; font-size: 3em; font-weight: bold; margin: 20px 0;">
+                    7
+                </div>
+            </div>
+            
+            <p class="instruction">
+                Inserisci la password nella postazione indicata<br>
+                per continuare il tuo percorso!
+            </p>
+        </div>
+    </div>        
+        
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <script>
+        // Get current URL and create QR code
+        const currentUrl = window.location.href;
+        const passwordUrl = currentUrl + (currentUrl.includes('?') ? '&' : '?') + 'page=secure';
+        
+        new QRCode(document.getElementById("qrcode"), {
+            text: passwordUrl,
+            width: 200,
+            height: 200,
+            colorDark: "#8B0000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        // Check URL parameters on load
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('page') === 'secure') {
+                document.getElementById('landingPage').style.display = 'none';
+                document.getElementById('passwordPage').classList.add('active');
+            }
+        });
+
+        // Password checking
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            const correctPassword = 'openday2024'; // Change this to your desired password
+            
+            if (password === correctPassword) {
+                document.getElementById('passwordPage').classList.remove('active');
+                document.getElementById('successPage').classList.add('active');
+                document.getElementById('errorMsg').textContent = '';
             } else {
-                errorMsg.textContent = "Password errata. Riprova!";
-                errorMsg.style.color = "red";
+                document.getElementById('errorMsg').textContent = 'Incorrect password. Please try again.';
             }
         }
 
-        document.getElementById("passwordInput").addEventListener("keypress", function(e) {
-            if (e.key === "Enter") {
+        // Allow Enter key to submit
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
                 checkPassword();
             }
         });
