@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accesso</title>
+</head>
+<body>
+    <div id="loginPage">
+        <h1>Inserisci la password</h1>
+        <input type="password" id="passwordInput" placeholder="Password">
+        <br><br>
+        <button onclick="checkPassword()">Entra</button>
+        <p id="errorMessage"></p>
+    </div>
+
+    <div id="gamePage" style="display: none;">
+        <h1>Benvenuto!</h1>
+        <p>Qui ci sarà il gioco...</p>
+        <p>[PLACEHOLDER PER IL GIOCO]</p>
+    </div>
+
+    <script>
+        const correctPassword = "123";
+
+        function checkPassword() {
+            const input = document.getElementById("passwordInput").value;
+            const errorMsg = document.getElementById("errorMessage");
+            
+            if (input === correctPassword) {
+                document.getElementById("loginPage").style.display = "none";
+                document.getElementById("gamePage").style.display = "block";
+            } else {
+                errorMsg.textContent = "Password errata. Riprova!";
+                errorMsg.style.color = "red";
+            }
+        }
+
+        document.getElementById("passwordInput").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
