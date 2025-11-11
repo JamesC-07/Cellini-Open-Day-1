@@ -1,2 +1,2 @@
-# Progettino per l'open day della mia scuola superiore
+# Progettino per l'open day della scuola superiore
 
