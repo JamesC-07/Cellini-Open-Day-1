@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+            background: linear-gradient(135deg, #006400 0%, #228B22 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -28,18 +28,18 @@
             padding: 50px;
             max-width: 600px;
             text-align: center;
-            border: 3px solid #8B0000;
+            border: 3px solid #006400;
         }
 
         h1 {
-            color: #8B0000;
+            color: #006400;
             font-size: 2.5em;
             margin-bottom: 10px;
             font-weight: bold;
         }
 
         .subtitle {
-            color: #DC143C;
+            color: #228B22;
             font-size: 1.2em;
             margin-bottom: 30px;
             font-style: italic;
@@ -72,7 +72,7 @@
             font-size: 0.9em;
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 2px solid #DC143C;
+            border-top: 2px solid #228B22;
         }
 
         /* Password Page Styles */
@@ -88,14 +88,14 @@
             width: 100%;
             padding: 15px;
             font-size: 1.1em;
-            border: 2px solid #DC143C;
+            border: 2px solid #228B22;
             border-radius: 10px;
             margin: 20px 0;
             text-align: center;
         }
 
         button {
-            background: #8B0000;
+            background: #006400;
             color: white;
             border: none;
             padding: 15px 40px;
@@ -107,13 +107,13 @@
         }
 
         button:hover {
-            background: #DC143C;
+            background: #228B22;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 100, 0, 0.3);
         }
 
         .error {
-            color: #DC143C;
+            color: #228B22;
             margin-top: 10px;
             font-weight: bold;
         }
@@ -134,8 +134,38 @@
 
         .checkmark {
             font-size: 4em;
-            color: #8B0000;
+            color: #006400;
             margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #006400;
+        }
+
+        .password-box {
+            background: #006400;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 2em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .station-box {
+            background: #228B22;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            font-size: 3em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .station-title {
+            color: #228B22;
+            margin-top: 30px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -160,18 +190,18 @@
 
         <!-- Password Page -->
         <div id="passwordPage" class="password-page">
-            <div class="checkmark"></div>
+            <div class="checkmark">✓</div>
             <h1>Primo Step Completato!</h1>
             <p class="subtitle"></p>
             
             <div class="qr-section">
-                <h2 style="color: #8B0000; margin-bottom: 15px;">La tua password è:</h2>
-                <div style="background: #8B0000; color: white; padding: 20px; border-radius: 10px; font-size: 2em; font-weight: bold; margin: 20px 0;">
+                <h2>La tua password è:</h2>
+                <div class="password-box">
                     PROGRESSUS
                 </div>
                 
-                <h2 style="color: #DC143C; margin-top: 30px; margin-bottom: 10px;">Vai alla postazione:</h2>
-                <div style="background: #DC143C; color: white; padding: 30px; border-radius: 10px; font-size: 3em; font-weight: bold; margin: 20px 0;">
+                <h2 class="station-title">Vai alla postazione:</h2>
+                <div class="station-box">
                     2
                 </div>
             </div>
@@ -195,7 +225,7 @@
             text: passwordUrl,
             width: 200,
             height: 200,
-            colorDark: "#8B0000",
+            colorDark: "#006400",
             colorLight: "#ffffff",
             correctLevel: QRCode.CorrectLevel.H
         });
@@ -224,11 +254,13 @@
         }
 
         // Allow Enter key to submit
-        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkPassword();
-            }
-        });
+        if (document.getElementById('passwordInput')) {
+            document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkPassword();
+                }
+            });
+        }
     </script>
 </body>
 </html>
